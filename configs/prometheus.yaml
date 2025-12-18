@@ -1,0 +1,1252 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+
+################################################################################
+# --------------------------- PROD (Product) ----------------------------------
+################################################################################
+
+- job_name: 'unity-dms-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/dms/metrics'
+
+- job_name: 'unity-accounting-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/accounting/metrics'
+
+- job_name: 'unity-ai-playground-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/ai-playground/metrics'
+
+- job_name: 'unity-analytics-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/analytics/metrics'
+
+- job_name: 'unity-cde-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/cde/metrics'
+
+- job_name: 'unity-check-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/check/metrics'
+
+- job_name: 'unity-configuration-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/config/metrics'
+
+- job_name: 'unity-eot-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/eot/metrics'
+
+- job_name: 'unity-flex-quote-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/quote-config/metrics'
+
+- job_name: 'unity-flex-reporting-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/documents/metrics'
+
+- job_name: 'unity-integration-api-main-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/hubex/metrics'
+
+- job_name: 'unity-integration-api-webhook-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/wekhook/metrics'
+
+- job_name: 'unity-mitek-polling-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/mitek/metrics'
+
+- job_name: 'unity-user-api-marketplace-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/marketplace/metrics'
+
+- job_name: 'unity-user-api-user-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/user/metrics'
+
+- job_name: 'unity-user-api-signup-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/signup/metrics'
+
+- job_name: 'unity-user-api-ums-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/ums/metrics'
+
+- job_name: 'unity-tax-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/T-Rate/metrics'
+
+- job_name: 'unity-workflow-api-prod'
+  static_configs:
+    - targets: ['api-k8s.appexnow.com']
+      labels:
+        environment: "prod"
+        client: "Product"
+  metrics_path: '/workflow/metrics'
+
+################################################################################
+# --------------------------- PROD (BMW) --------------------------------------
+################################################################################
+
+- job_name: 'unity-dms-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/dms/metrics'
+
+- job_name: 'unity-accounting-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/accounting/metrics'
+
+- job_name: 'unity-ai-playground-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/ai-playground/metrics'
+
+- job_name: 'unity-analytics-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/analytics/metrics'
+
+- job_name: 'unity-cde-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/cde/metrics'
+
+- job_name: 'unity-check-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/check/metrics'
+
+- job_name: 'unity-configuration-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/config/metrics'
+
+- job_name: 'unity-eot-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/eot/metrics'
+
+- job_name: 'unity-flex-quote-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/quote-config/metrics'
+
+- job_name: 'unity-flex-reporting-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/documents/metrics'
+
+- job_name: 'unity-integration-api-main-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/hubex/metrics'
+
+- job_name: 'unity-integration-api-webhook-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/wekhook/metrics'
+
+- job_name: 'unity-mitek-polling-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/mitek/metrics'
+
+- job_name: 'unity-user-api-marketplace-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/marketplace/metrics'
+
+- job_name: 'unity-user-api-user-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/user/metrics'
+
+- job_name: 'unity-user-api-signup-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/signup/metrics'
+
+- job_name: 'unity-user-api-ums-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/ums/metrics'
+
+- job_name: 'unity-tax-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/T-Rate/metrics'
+
+- job_name: 'unity-workflow-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/workflow/metrics'
+
+################################################################################
+# --------------------------- PREPROD (Product) --------------------------------
+################################################################################
+
+- job_name: 'unity-dms-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/dms/metrics'
+
+- job_name: 'unity-accounting-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/accounting/metrics'
+
+- job_name: 'unity-ai-playground-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/ai-playground/metrics'
+
+- job_name: 'unity-analytics-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/analytics/metrics'
+
+- job_name: 'unity-cde-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/cde/metrics'
+
+- job_name: 'unity-check-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/check/metrics'
+
+- job_name: 'unity-configuration-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/config/metrics'
+
+- job_name: 'unity-eot-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/eot/metrics'
+
+- job_name: 'unity-flex-quote-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/quote-config/metrics'
+
+- job_name: 'unity-flex-reporting-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/documents/metrics'
+
+- job_name: 'unity-integration-api-main-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/hubex/metrics'
+
+- job_name: 'unity-integration-api-webhook-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/wekhook/metrics'
+
+- job_name: 'unity-mitek-polling-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/mitek/metrics'
+
+- job_name: 'unity-user-api-marketplace-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/marketplace/metrics'
+
+- job_name: 'unity-user-api-user-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/user/metrics'
+
+- job_name: 'unity-user-api-signup-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/signup/metrics'
+
+- job_name: 'unity-user-api-ums-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/ums/metrics'
+
+- job_name: 'unity-tax-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/T-Rate/metrics'
+
+- job_name: 'unity-workflow-api-preprod'
+  static_configs:
+    - targets: ['preprod-api-k8s.netsolapp.io']
+      labels:
+        environment: "preprod"
+        client: "Product"
+  metrics_path: '/workflow/metrics'
+
+################################################################################
+# --------------------------- PREPROD (BMW) -----------------------------------
+################################################################################
+
+- job_name: 'unity-dms-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/dms/metrics'
+
+- job_name: 'unity-accounting-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/accounting/metrics'
+
+- job_name: 'unity-ai-playground-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/ai-playground/metrics'
+
+- job_name: 'unity-analytics-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/analytics/metrics'
+
+- job_name: 'unity-cde-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/cde/metrics'
+
+- job_name: 'unity-check-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/check/metrics'
+
+- job_name: 'unity-configuration-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/config/metrics'
+
+- job_name: 'unity-eot-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/eot/metrics'
+
+- job_name: 'unity-flex-quote-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/quote-config/metrics'
+
+- job_name: 'unity-flex-reporting-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/documents/metrics'
+
+- job_name: 'unity-integration-api-main-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/hubex/metrics'
+
+- job_name: 'unity-integration-api-webhook-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/wekhook/metrics'
+
+- job_name: 'unity-mitek-polling-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/mitek/metrics'
+
+- job_name: 'unity-user-api-marketplace-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/marketplace/metrics'
+
+- job_name: 'unity-user-api-user-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/user/metrics'
+
+- job_name: 'unity-user-api-signup-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/signup/metrics'
+
+- job_name: 'unity-user-api-ums-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/ums/metrics'
+
+- job_name: 'unity-tax-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/T-Rate/metrics'
+
+- job_name: 'unity-workflow-api-preprod-bmw'
+  static_configs:
+    - targets: ['preprod-api-k8s.bmwdr.io']
+      labels:
+        environment: "preprod"
+        client: "BMW"
+  metrics_path: '/workflow/metrics'
+
+################################################################################
+# --------------------------- DEV (Product) -----------------------------------
+################################################################################
+
+- job_name: 'unity-dms-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/dms/metrics'
+
+- job_name: 'unity-accounting-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/accounting/metrics'
+
+- job_name: 'unity-ai-playground-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/ai-playground/metrics'
+
+- job_name: 'unity-analytics-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/analytics/metrics'
+
+- job_name: 'unity-cde-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/cde/metrics'
+
+- job_name: 'unity-check-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/check/metrics'
+
+- job_name: 'unity-configuration-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/config/metrics'
+
+- job_name: 'unity-eot-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/eot/metrics'
+
+- job_name: 'unity-flex-quote-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/quote-config/metrics'
+
+- job_name: 'unity-flex-reporting-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/documents/metrics'
+
+- job_name: 'unity-integration-api-main-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/hubex/metrics'
+
+- job_name: 'unity-integration-api-webhook-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/wekhook/metrics'
+
+- job_name: 'unity-mitek-polling-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/mitek/metrics'
+
+- job_name: 'unity-user-api-marketplace-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/marketplace/metrics'
+
+- job_name: 'unity-user-api-user-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/user/metrics'
+
+- job_name: 'unity-user-api-signup-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/signup/metrics'
+
+- job_name: 'unity-user-api-ums-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/ums/metrics'
+
+- job_name: 'unity-tax-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/T-Rate/metrics'
+
+- job_name: 'unity-workflow-api-dev'
+  static_configs:
+    - targets: ['dev-api-k8s.netsolapp.io']
+      labels:
+        environment: "dev"
+        client: "Product"
+  metrics_path: '/workflow/metrics'
+
+################################################################################
+# --------------------------- DEV (BMW) ---------------------------------------
+################################################################################
+
+- job_name: 'unity-dms-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/dms/metrics'
+
+- job_name: 'unity-accounting-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/accounting/metrics'
+
+- job_name: 'unity-ai-playground-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/ai-playground/metrics'
+
+- job_name: 'unity-analytics-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/analytics/metrics'
+
+- job_name: 'unity-cde-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/cde/metrics'
+
+- job_name: 'unity-check-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/check/metrics'
+
+- job_name: 'unity-configuration-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/config/metrics'
+
+- job_name: 'unity-eot-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/eot/metrics'
+
+- job_name: 'unity-flex-quote-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/quote-config/metrics'
+
+- job_name: 'unity-flex-reporting-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/documents/metrics'
+
+- job_name: 'unity-integration-api-main-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/hubex/metrics'
+
+- job_name: 'unity-integration-api-webhook-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/wekhook/metrics'
+
+- job_name: 'unity-mitek-polling-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/mitek/metrics'
+
+- job_name: 'unity-user-api-marketplace-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/marketplace/metrics'
+
+- job_name: 'unity-user-api-user-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/user/metrics'
+
+- job_name: 'unity-user-api-signup-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/signup/metrics'
+
+- job_name: 'unity-user-api-ums-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/ums/metrics'
+
+- job_name: 'unity-tax-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/T-Rate/metrics'
+
+- job_name: 'unity-workflow-api-dev-bmw'
+  static_configs:
+    - targets: ['dev-api-k8s.bmwdr.io']
+      labels:
+        environment: "dev"
+        client: "BMW"
+  metrics_path: '/workflow/metrics'
+
+################################################################################
+# --------------------------- STAGING (Product) --------------------------------
+################################################################################
+
+- job_name: 'unity-dms-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/dms/metrics'
+
+- job_name: 'unity-accounting-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/accounting/metrics'
+
+- job_name: 'unity-ai-playground-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/ai-playground/metrics'
+
+- job_name: 'unity-analytics-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/analytics/metrics'
+
+- job_name: 'unity-cde-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/cde/metrics'
+
+- job_name: 'unity-check-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/check/metrics'
+
+- job_name: 'unity-configuration-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/config/metrics'
+
+- job_name: 'unity-eot-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/eot/metrics'
+
+- job_name: 'unity-flex-quote-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/quote-config/metrics'
+
+- job_name: 'unity-flex-reporting-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/documents/metrics'
+
+- job_name: 'unity-integration-api-main-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/hubex/metrics'
+
+- job_name: 'unity-integration-api-webhook-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/wekhook/metrics'
+
+- job_name: 'unity-mitek-polling-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/mitek/metrics'
+
+- job_name: 'unity-user-api-marketplace-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/marketplace/metrics'
+
+- job_name: 'unity-user-api-user-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/user/metrics'
+
+- job_name: 'unity-user-api-signup-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/signup/metrics'
+
+- job_name: 'unity-user-api-ums-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/ums/metrics'
+
+- job_name: 'unity-tax-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/T-Rate/metrics'
+
+- job_name: 'unity-workflow-api-staging'
+  static_configs:
+    - targets: ['stage-api-k8s.netsolapp.io']
+      labels:
+        environment: "staging"
+        client: "Product"
+  metrics_path: '/workflow/metrics'
+
+################################################################################
+# --------------------------- STAGING (BMW) -----------------------------------
+################################################################################
+
+- job_name: 'unity-dms-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/dms/metrics'
+
+- job_name: 'unity-accounting-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/accounting/metrics'
+
+- job_name: 'unity-ai-playground-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/ai-playground/metrics'
+
+- job_name: 'unity-analytics-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/analytics/metrics'
+
+- job_name: 'unity-cde-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/cde/metrics'
+
+- job_name: 'unity-check-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/check/metrics'
+
+- job_name: 'unity-configuration-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/config/metrics'
+
+- job_name: 'unity-eot-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/eot/metrics'
+
+- job_name: 'unity-flex-quote-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/quote-config/metrics'
+
+- job_name: 'unity-flex-reporting-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/documents/metrics'
+
+- job_name: 'unity-integration-api-main-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/hubex/metrics'
+
+- job_name: 'unity-integration-api-webhook-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/wekhook/metrics'
+
+- job_name: 'unity-mitek-polling-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/mitek/metrics'
+
+- job_name: 'unity-user-api-marketplace-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/marketplace/metrics'
+
+- job_name: 'unity-user-api-user-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/user/metrics'
+
+- job_name: 'unity-user-api-signup-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/signup/metrics'
+
+- job_name: 'unity-user-api-ums-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/ums/metrics'
+
+- job_name: 'unity-tax-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/T-Rate/metrics'
+
+- job_name: 'unity-workflow-api-staging-bmw'
+  static_configs:
+    - targets: ['stage-api-k8s.bmwdr.io']
+      labels:
+        environment: "staging"
+        client: "BMW"
+  metrics_path: '/workflow/metrics'
