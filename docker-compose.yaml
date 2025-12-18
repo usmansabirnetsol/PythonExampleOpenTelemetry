@@ -1,0 +1,102 @@
+services:
+  # grafana:
+  #   image: grafana/grafana:latest
+  #   container_name: grafana
+  #   ports:
+  #     - "9000:3000"
+  #   environment:
+  #     GF_SERVER_ROOT_URL: https://grafana.netsolapp.io
+  #     GF_SERVER__ROOT_URL: https://grafana.netsolapp.io
+  #     GF_SERVER_DOMAIN: grafana.netsolapp.io
+  #     GF_SECURITY_ADMIN_USER: admin
+  #     GF_SECURITY_ADMIN_PASSWORD: YourStrongPassword123
+  #     GF_SMTP_ENABLED: "true"
+  #     GF_SMTP_HOST: smtp.resend.com:587
+  #     GF_SMTP_USER: resend
+  #     GF_SMTP_PASSWORD: re_chWqJG4g_TnzQBw6KNXG8vRbLYg9adEkb
+  #     GF_SMTP_FROM_ADDRESS: onboarding@resend.dev
+  #     GF_SMTP_FROM_NAME: Grafana Alerts
+  #     GF_FEATURE_TOGGLES_ENABLE: provisioning,kubernetesDashboards
+  #   volumes:
+  #     - grafana-storage:/var/lib/grafana
+  #   user: root
+  #   restart: unless-stopped
+
+  # prometheus:
+  #   image: prom/prometheus:latest
+  #   container_name: prometheus
+  #   ports:
+  #     - "9090:9090"
+  #   volumes:
+  #     - ./configs/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
+  #   command:
+  #     - '--config.file=/etc/prometheus/prometheus.yaml'
+  #     - '--storage.tsdb.path=/prometheus'
+  #     - '--web.console.libraries=/etc/prometheus/console_libraries'
+  #     - '--web.console.templates=/etc/prometheus/consoles'
+  #     - '--storage.tsdb.retention.time=200h'
+  #     - '--web.enable-lifecycle'
+  #   restart: unless-stopped
+
+  # tempo:
+  #   image: grafana/tempo:latest
+  #   container_name: tempo
+  #   ports:
+  #     - "3200:3100"  # HTTP API only (for Grafana queries)
+  #   # Remove external 4317/4318 mappings - only used internally by otel-collector
+  #   volumes:
+  #     - ./configs/tempo.yaml:/etc/tempo/tempo.yaml:ro
+  #     - tempo-storage:/tmp/tempo
+  #   command:
+  #     - -config.file=/etc/tempo/tempo.yaml
+  #   user: root
+  #   restart: unless-stopped
+
+  # loki:
+  #   image: grafana/loki:latest
+  #   container_name: loki
+  #   ports:
+  #     - "3100:3100"
+  #   volumes:
+  #     - ./configs/loki-config.yaml:/etc/loki/loki-config.yaml:ro
+  #     - loki-storage:/data/loki
+  #   command:
+  #     - -config.file=/etc/loki/loki-config.yaml
+  #   user: root
+  #   restart: unless-stopped
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otel-collector
+    ports:
+      - "4317:4317"   # OTLP gRPC receiver (for your application)
+      - "4318:4318"   # OTLP HTTP receiver (for your application)
+      - "8888:8888"   # Prometheus metrics exposed by the collector
+      - "8889:8889"   # Prometheus exporter metrics
+      - "13133:13133" # health_check extension
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml:ro
+    command:
+      - --config=/etc/otel-collector-config.yaml
+    restart: unless-stopped
+    # depends_on:
+    #   - tempo
+    #   - loki
+    #   - prometheus
+
+#  collector:
+#    image: grafana/alloy:latest
+#    container_name: collector
+#    ports:
+#      - "12347:12347"
+#    volumes:
+#      - ./configs/collector.alloy:/etc/collector/collector.alloy:ro
+#    command:
+#      - run
+#      - /etc/collector/collector.alloy
+#    restart: unless-stopped
+
+# volumes:
+#   grafana-storage:
+#   tempo-storage:
+#   loki-storage:
