@@ -55,10 +55,20 @@ exporters:
     tls:
       insecure: true
 
+
+  prometheusremotewrite:
+    # Use the /api/v1/write endpoint of your Prometheus server
+    endpoint: "http://prometheus:9090/api/v1/write"
+    timeout: 30s
+    resource_to_telemetry_conversion:
+      enabled: true
+
+
   # Metrics to Prometheus
   prometheus:
     endpoint: "0.0.0.0:8889"
-    namespace: otel
+    resource_to_telemetry_conversion:
+      enabled: true
     const_labels:
       exporter: "otlp"
 
@@ -92,14 +102,16 @@ service:
     traces:
       receivers: [otlp]
       processors: [memory_limiter, batch, resource, attributes]
-      exporters: [debug]
+      exporters: [otlp/tempo]
 
     metrics:
       receivers: [otlp]
-      processors: [memory_limiter, batch, resource]
-      exporters: [debug]
+#      processors: [memory_limiter, batch, resource]
+      processors: [memory_limiter, batch]
+      exporters: [prometheus]
 
     logs:
       receivers: [otlp]
       processors: [memory_limiter, batch, resource, attributes]
-      exporters: [debug]
+      exporters: [otlphttp/loki]
+      
