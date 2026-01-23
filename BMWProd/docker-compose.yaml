@@ -1,0 +1,117 @@
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    command:
+      - --config.file=/etc/prometheus/prometheus.yaml
+      - --storage.tsdb.path=/prometheus
+      - --web.enable-lifecycle
+      - --web.enable-otlp-receiver
+      - --enable-feature=promql-experimental-functions
+    volumes:
+      - ./configs/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    networks: [observability]
+
+  loki:
+    image: grafana/loki:latest
+    command: ["-config.file=/etc/loki/loki-config.yaml"]
+    ports:
+      - "3100:3100"
+    volumes:
+      - loki-data:/var/loki
+      - ./configs/loki-config.yaml:/etc/loki/loki-config.yaml:ro
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3100/ready"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    networks: [observability]
+
+  tempo:
+    image: grafana/tempo:latest
+    command: ["-config.file=/etc/tempo/tempo.yaml"]
+    ports:
+      - "3200:3200"   # HTTP status, metrics
+      - "14268:14268" # Jaeger ingest
+      - "4417:4417"   # OTLP gRPC ingest
+      - "4418:4418"   # OTLP HTTP ingest
+      - "7946:7946"   # Memberlist
+    volumes:
+      - tempo-data:/var/tempo
+      - ./configs/tempo.yaml:/etc/tempo/tempo.yaml:ro
+      # - ./monitoring/tempo/metrics:/var/tempo/generator-wal
+
+    networks: [observability]
+
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      # - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      # - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+#      - GF_FEATURE_TOGGLES_ENABLE=logsDrilldownVolume
+      - PROM_URL=${PROM_URL:-http://prometheus:9090}
+      - LOKI_URL=${LOKI_URL:-http://loki:3100}
+      - TEMPO_HTTP_URL=${TEMPO_HTTP_URL:-http://tempo:3200}
+      - GF_FEATURE_TOGGLES_ENABLE=logsDrilldownVolume,provisioning,kubernetesDashboards
+
+      - GF_SERVER_ROOT_URL=https://grafana.checkout.bmwusa.com
+      - GF_SERVER_SERVE_FROM_SUB_PATH=false
+#      - GF_SERVER__ROOT_URL= "grafana.netsolapp.io"
+    networks: [observability]
+
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otel-collector
+    ports:
+      - "4317:4317"   # OTLP gRPC receiver (for your application)
+      - "4318:4318"   # OTLP HTTP receiver (for your application)
+      - "8888:8888"   # Prometheus metrics exposed by the collector
+      - "8889:8889"   # Prometheus exporter metrics
+      - "13133:13133" # health_check extension
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml:ro
+    command:
+      - --config=/etc/otel-collector-config.yaml
+    restart: unless-stopped
+    depends_on:
+       - tempo
+       - loki
+       - prometheus
+    networks: [observability]
+
+
+
+#  db:
+#    image: postgres:16-alpine # Use a specific version for stability and smaller size
+#    restart: always
+#    environment:
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: postgres
+#      POSTGRES_DB: testdb
+#    ports:
+#      - "5432:5432" # Maps local port 5432 to the container's port 5432
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+volumes:
+#  rabbitmq_data:
+  grafana-data:
+  prometheus-data:
+  loki-data:
+  tempo-data:
+#  redis-data:
+#  postgres_data:
+
+networks:
+  observability:
+    name: observability
+    driver: bridge
