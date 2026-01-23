@@ -1,0 +1,179 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+
+################################################################################
+# --------------------------- COLLECTOR ----------------------------------
+################################################################################
+
+- job_name: "collector"
+  static_configs:
+  - targets: [ "otel-collector:8889" ]
+
+
+
+################################################################################
+# --------------------------- PROD (BMW) --------------------------------------
+################################################################################
+
+- job_name: 'unity-dms-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/dms/metrics'
+
+- job_name: 'unity-accounting-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/accounting/metrics'
+
+- job_name: 'unity-ai-playground-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/ai-playground/metrics'
+
+- job_name: 'unity-analytics-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/analytics/metrics'
+
+- job_name: 'unity-cde-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/cde/metrics'
+
+- job_name: 'unity-check-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/check/metrics'
+
+- job_name: 'unity-configuration-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/config/metrics'
+
+- job_name: 'unity-eot-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/eot/metrics'
+
+- job_name: 'unity-flex-quote-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/quote-config/metrics'
+
+- job_name: 'unity-flex-reporting-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/documents/metrics'
+
+- job_name: 'unity-integration-api-main-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/hubex/metrics'
+
+- job_name: 'unity-integration-api-webhook-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/wekhook/metrics'
+
+- job_name: 'unity-mitek-polling-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/mitek/metrics'
+
+- job_name: 'unity-user-api-marketplace-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/marketplace/metrics'
+
+- job_name: 'unity-user-api-user-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/user/metrics'
+
+- job_name: 'unity-user-api-signup-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/signup/metrics'
+
+- job_name: 'unity-user-api-ums-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/ums/metrics'
+
+- job_name: 'unity-tax-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/T-Rate/metrics'
+
+- job_name: 'unity-workflow-api-prod-bmw'
+  static_configs:
+    - targets: ['api-k8s.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/workflow/metrics'
+
+- job_name: 'unity-flex-reporting-vm'
+  scheme: https
+  static_configs:
+    - targets: ['flex-reporting-vm.checkout.bmwusa.com']
+      labels:
+        environment: "prod"
+        client: "BMW"
+  metrics_path: '/documents/metrics'
