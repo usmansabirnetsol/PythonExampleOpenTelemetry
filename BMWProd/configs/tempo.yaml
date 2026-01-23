@@ -1,0 +1,54 @@
+server:
+  http_listen_port: 3200
+  grpc_listen_port: 9095
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+          endpoint: 0.0.0.0:4417
+        http:
+          endpoint: 0.0.0.0:4418
+
+ingester:
+  trace_idle_period: 10s
+  max_block_duration: 5m
+
+compactor:
+  compaction:
+    block_retention: 168h # keep traces 7 days
+
+querier:
+  frontend_worker:
+    frontend_address: tempo:9095
+
+query_frontend:
+  search:
+    concurrent_jobs: 100
+
+# 👇 This section is what fixes the “empty ring” error
+memberlist:
+  join_members:
+  - tempo # container name (as declared in docker-compose)
+
+storage:
+  trace:
+    backend: local
+    wal:
+      path: /var/tempo/wal
+    local:
+      path: /var/tempo/blocks
+
+metrics_generator:
+  registry:
+    external_labels:
+      cluster: docker-observability
+  storage:
+    path: /var/tempo/generator-wal
+  processor:
+    span_metrics:
+      dimensions:
+      - service.name
+      - span.kind
+      - status.code
