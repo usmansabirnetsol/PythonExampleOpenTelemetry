@@ -1,12 +1,19 @@
 services:
   prometheus:
     image: prom/prometheus:latest
+    container_name: prometheus
+    restart: always
     command:
       - --config.file=/etc/prometheus/prometheus.yaml
       - --storage.tsdb.path=/prometheus
       - --web.enable-lifecycle
       - --web.enable-otlp-receiver
       - --enable-feature=promql-experimental-functions
+      - --log.level=warn
+      - --storage.tsdb.retention.time=7d
+      - --storage.tsdb.min-block-duration=2h
+      - --storage.tsdb.max-block-duration=12h
+      
     volumes:
       - ./configs/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
       - prometheus-data:/prometheus
